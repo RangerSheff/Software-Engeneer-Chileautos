@@ -1,0 +1,49 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  .corporate-button {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+    margin-bottom: 20px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .corporate-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .corporate-button:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  app-health-check {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  router-outlet {
+    margin-top: 40px;
+    display: block;
+  }
+  

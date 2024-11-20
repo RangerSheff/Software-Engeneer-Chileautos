@@ -1,0 +1,35 @@
+<div *ngIf="loading">Cargando episodios...</div>
+
+<!-- <div class="episode-list-container" (scroll)="onScroll($event)"> -->
+  <div *ngIf="!loading && episodes.length > 0; else noEpisodes">
+    <table class="episode-table">
+      <thead>
+        <tr>
+          <th>Nombre del Episodio</th>
+          <th>Air Date</th>
+          <th>Episode Code</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let episode of episodes">
+          <td>{{ episode.name }}</td>
+          <td>{{ episode.air_date }}</td>
+          <td>{{ episode.episode }}</td>
+          <td>
+            <button (click)="goToEpisodeDetail(episode.id)">Ver Detalle</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="loadEpisodes()">Cargar más episodios</button>
+  </div>
+<!-- </div> -->
+
+<ng-template #noEpisodes>
+  <p>Episodios No disponibles.</p>
+</ng-template>
+
+<div class="load-more-container" *ngIf="!loading" (scroll)="onScroll($event)" [ngClass]="{ 'loading': loading }">
+  <p *ngIf="loading">Cargando más episodios...</p>
+</div>

@@ -1,0 +1,46 @@
+.episode-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .episode-detail-table th, .episode-detail-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .episode-detail-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .episode-detail-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .episode-detail-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .episode-detail-table td strong {
+    font-weight: bold;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  ul li {
+    list-style-type: disc;
+    padding: 5px 0;
+  }
+  
+  div[ngIf="loading"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
+  }
+  

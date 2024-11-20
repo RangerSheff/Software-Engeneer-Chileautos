@@ -1,0 +1,45 @@
+<div *ngIf="healthStatus?.status" 
+     [ngClass]="{
+       'healthy': healthStatus.status === 'ok', 
+       'unhealthy': healthStatus.status === 'down'
+     }" 
+     class="system-status">
+  <strong>Status:</strong> 
+  <span>{{ getSystemStatus() }}</span>
+</div>
+
+<div *ngIf="isHealthStatusAvailable()">
+  <div *ngIf="healthStatus?.info">
+    <h3>Service Health</h3>
+    <div *ngFor="let service of objectKeys(healthStatus.info)">
+      <div class="service-status" [ngClass]="{
+            'healthy': getServiceStatus(service) === 'up', 
+            'unhealthy': getServiceStatus(service) === 'down'
+          }">
+        <i class="status-icon" [ngClass]="{
+          'healthy': getServiceStatus(service) === 'up', 
+          'unhealthy': getServiceStatus(service) === 'down'
+        }"></i>
+        <span>{{ service }}: {{ getServiceStatus(service) === 'up' ? 'Up' : getServiceStatus(service) === 'down' ? 'Down' : 'Unknown' }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="healthStatus?.error && objectKeys(healthStatus.error).length > 0">
+    <h3>Error Information</h3>
+    <div *ngFor="let error of objectKeys(healthStatus.error)">
+      <div class="error-info">
+        <strong>{{ error | capitalize }}:</strong> {{ healthStatus.error[error] }}
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="healthStatus?.details && objectKeys(healthStatus.details).length > 0">
+    <h3>Additional Details</h3>
+    <div *ngFor="let detail of objectKeys(healthStatus.details)">
+      <div class="details-info">
+        <strong>{{ detail | capitalize }}:</strong> {{ healthStatus.details[detail] }}
+      </div>
+    </div>
+  </div>
+</div>
